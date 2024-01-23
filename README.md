@@ -16,17 +16,21 @@ npm install
 Using yarn:
 yarn install
 
-(This will install the necessary dependencies listed in the package.json file.)
+(This will install the necessary dependencies listed in the package.json file)
 
 # Next, install the specific project dependencies:
 
 Using npm:
-npm install autoprefixer bcryptjs cookie-parser cors express jsonwebtoken mongoose multer fs nodemon postcss-cli tailwindcss react-quill date-fns
+npm install autoprefixer bcryptjs cookie-parser cors express jsonwebtoken mongoose multer fs nodemon postcss-cli tailwindcss
+
+Navigate to client folder with "cd client" and install the dependencies npm i react-quill date-fns --save
 
 Using yarn:
 yarn add autoprefixer bcryptjs cookie-parser cors express jsonwebtoken mongoose multer fs nodemon postcss-cli tailwindcss react-quill date-fns
 
-# The connection to the database: MongoDB is done in the file api/index.js, line 25 
+Navigate to the client folder with "cd client" and install the dependencies yarn add react-quill date-fns --save
+
+# The connection to the database: MongoDB is done in the api/index.js file on line 25 
 
 # Project Setup
 After installing the dependencies, follow these steps:
