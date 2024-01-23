@@ -1,0 +1,22 @@
+.mainPage {
+  width: 60%;
+  gap: 20px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postsContainer {
+  border-top: 1px solid white;
+  padding-top: 30px;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 768px) {
+  .postsContainer {
+    border: none;
+  }
+}

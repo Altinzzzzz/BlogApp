@@ -1,0 +1,90 @@
+.nav {
+  margin-top: 30px;
+  padding-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.list > * {
+  font-size: 1.1rem;
+}
+
+.category {
+  list-style-type: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.category:hover {
+  transition: 0.3s;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.categorySports {
+  color: black;
+  background-color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.categorySports:hover {
+  color: #2563eb;
+}
+
+.categoryLocalNews {
+  color: black;
+  background-color: #ffd700;
+  border: 1px solid #ffd700;
+}
+
+.categoryLocalNews:hover {
+  color: #ffd700;
+}
+
+.categoryGaming {
+  color: black;
+  background-color: #9333ea;
+  border: 1px solid #9333ea;
+}
+
+.categoryGaming:hover {
+  color: #9333ea;
+}
+
+.categoryHistory {
+  color: black;
+  background-color: #ca8a04;
+  border: 1px solid #ca8a04;
+}
+
+.categoryHistory:hover {
+  color: #ca8a04;
+}
+
+.categoryInternationalNews {
+  color: black;
+  background-color: #e11d48;
+  border: 1px solid #e11d48;
+}
+
+.categoryInternationalNews:hover {
+  color: #e11d48;
+}
+
+.categoryOther {
+  color: black;
+  background-color: white;
+  border: 1px solid white;
+}
+
+.categoryOther:hover {
+  color: white;
+}

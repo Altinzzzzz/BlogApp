@@ -1,0 +1,158 @@
+.imgContainer {
+  width: 40%;
+}
+
+.post {
+  display: flex;
+  gap: 20px;
+  height: 230px;
+}
+
+@media (max-width: 768px) {
+  .post {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid gray;
+    outline: 1px solid white;
+  }
+
+  .imgContainer {
+    width: 100%;
+  }
+
+  .postContent {
+    padding: 1px 0;
+  }
+}
+
+.postImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.postContent {
+  padding: 1px 0;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.postContent h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.summary {
+  color: rgb(216, 213, 213);
+}
+
+.info {
+  margin: 6px 0;
+  color: #888;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.moreInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.moreInfo > p {
+  color: white;
+  margin-right: 24px;
+}
+
+.readMoreLink {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.readMoreLink .readMoreLink:hover {
+  color: #45a049;
+}
+
+.category {
+  display: inline-block;
+  width: fit-content;
+  list-style-type: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 10px 0 0;
+}
+
+.category:hover {
+  transition: 0.3s;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.categorySports {
+  color: black;
+  background-color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.categorySports:hover {
+  color: #2563eb;
+}
+
+.categoryLocalNews {
+  color: black;
+  background-color: #ffd700;
+  border: 1px solid #ffd700;
+}
+
+.categoryLocalNews:hover {
+  color: #ffd700;
+}
+
+.categoryGaming {
+  color: black;
+  background-color: #9333ea;
+  border: 1px solid #9333ea;
+}
+
+.categoryGaming:hover {
+  color: #9333ea;
+}
+
+.categoryHistory {
+  color: black;
+  background-color: #ca8a04;
+  border: 1px solid #ca8a04;
+}
+
+.categoryHistory:hover {
+  color: #ca8a04;
+}
+
+.categoryInternationalNews {
+  color: black;
+  background-color: #e11d48;
+  border: 1px solid #e11d48;
+}
+
+.categoryInternationalNews:hover {
+  color: #e11d48;
+}
+
+.categoryOther {
+  color: black;
+  background-color: white;
+  border: 1px solid white;
+}
+
+.categoryOther:hover {
+  color: white;
+}
