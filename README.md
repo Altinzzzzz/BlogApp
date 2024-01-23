@@ -1,6 +1,12 @@
 # BlogApp
 A simple BlogApp where users can upload blogs about whatever comes to their minds
 
+# Project Stacl
+
+Frontend: React
+Backend: Nodejs
+Database: MongoDB
+
 # Project Initialization
 After opening the project folder in Visual Studio Code, run the following command to install the required modules:
 
@@ -15,11 +21,12 @@ yarn install
 # Next, install the specific project dependencies:
 
 Using npm:
-npm install autoprefixer bcryptjs cookie-parser cors express jsonwebtoken mongoose multer fs nodemon postcss-cli tailwindcss
+npm install autoprefixer bcryptjs cookie-parser cors express jsonwebtoken mongoose multer fs nodemon postcss-cli tailwindcss react-quill date-fns
 
 Using yarn:
-yarn add autoprefixer bcryptjs cookie-parser cors express jsonwebtoken mongoose multer fs nodemon postcss-cli tailwindcss
+yarn add autoprefixer bcryptjs cookie-parser cors express jsonwebtoken mongoose multer fs nodemon postcss-cli tailwindcss react-quill date-fns
 
+# The connection to the database: MongoDB is done in the file api/index.js, line 25 
 
 # Project Setup
 After installing the dependencies, follow these steps:
