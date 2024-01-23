@@ -22,7 +22,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 const uploadMiddleware = multer({ dest: "uploads/" });
 
 mongoose.connect(
-  "mongodb+srv://altinsylejmani19:6ZpBoQn2Q3htgbzJ@cluster0.q9rieey.mongodb.net/Test"
+  "mongodb+srv://username:password@cluster0.q9rieey.mongodb.net/Test"
 );
 
 app.post("/register", async (req, res) => {
