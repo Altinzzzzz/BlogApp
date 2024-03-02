@@ -40,6 +40,6 @@ After installing the dependencies, follow these steps:
 - Start the backend server:
 - run "node index.js"
 
-Note: The backend server runs on port 3001 by default. You can change this in the api/index.js file, but ensure that you update the corresponding calls in the client files.
-
 The project should now be up and running! Feel free to explore and have a great experience!
+
+Note: The backend server runs on port 3001 by default. You can change this in the api/index.js file, however this is not recommended as this requires you to update the corresponding calls in the client files too.

@@ -15,7 +15,7 @@ export default function PostPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3001/post/${id}`);
+        const response = await fetch(`http://localhost:3001/postInfo/${id}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -37,7 +37,7 @@ export default function PostPage() {
     async function updateViews() {
       try {
         const response = await fetch(
-          `http://localhost:3001/post/updateViews/${id}`,
+          `http://localhost:3001/postInfo/${id}/updateViews`,
           {
             method: "PUT",
           }
@@ -62,7 +62,7 @@ export default function PostPage() {
   async function getComments() {
     try {
       const response = await fetch(
-        `http://localhost:3001/post/${id}/getcomments`
+        `http://localhost:3001/postInfo/${id}/getcomments`
       );
 
       if (response.ok) {
@@ -82,13 +82,16 @@ export default function PostPage() {
 
   async function addComment() {
     try {
-      const response = await fetch(`http://localhost:3001/post/${id}/comment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: userInfo.id, desc: newComment }),
-      });
+      const response = await fetch(
+        `http://localhost:3001/postInfo/${id}/comment`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId: userInfo.id, desc: newComment }),
+        }
+      );
 
       if (response.ok) {
         setCommentAdded(true);
@@ -110,7 +113,7 @@ export default function PostPage() {
   async function deleteComment(commentId) {
     try {
       const response = await fetch(
-        `http://localhost:3001/post/${id}/${commentId}`,
+        `http://localhost:3001/postInfo/${id}/${commentId}`,
         {
           method: "DELETE",
           headers: {
@@ -133,7 +136,7 @@ export default function PostPage() {
 
   async function deletePost() {
     try {
-      const response = await fetch(`http://localhost:3001/delete/post/${id}`, {
+      const response = await fetch(`http://localhost:3001/postInfo/${id}/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -228,7 +231,7 @@ export default function PostPage() {
           </div>
         </div>
       )}
-      <p className={styles.views}>Views: {postInfo?.views}</p>
+      <p className={styles.views}>Views: {postInfo?.views / 2}</p>
       <div className={styles.imageContainer}>
         <img
           src={`http://localhost:3001/${postInfo?.cover}`}

@@ -28,7 +28,7 @@ const Header = () => {
 
   useEffect(() => {
     try {
-      fetch("http://localhost:3001/profile", {
+      fetch("http://localhost:3001/auth/profile", {
         credentials: "include",
       })
         .then((response) => {
@@ -51,7 +51,7 @@ const Header = () => {
   }, []);
 
   function onLogout() {
-    fetch("http://localhost:3001/logout", {
+    fetch("http://localhost:3001/auth/logout", {
       credentials: "include",
       method: "POST",
     });

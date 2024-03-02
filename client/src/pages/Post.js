@@ -37,7 +37,7 @@ function Post(post) {
       </div>
       <div className={styles.postContent}>
         <Link to={`/post/${_id}`}>
-          <h2>{title}</h2>
+          <h1 className={styles.title}>{title}</h1>
         </Link>
         <h4 className={`${styles.category} ${categoryStyleMap[category]}`}>
           {category}
@@ -55,7 +55,7 @@ function Post(post) {
               Read More
             </Link>
           </p>
-          <p>Views: {views}</p>
+          <p>Views: {views / 2}</p>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ function Posts() {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:3001/popularposts").then((response) => {
+    fetch("http://localhost:3001/posts/popularposts").then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -20,7 +20,7 @@ function Posts() {
           setPosts(posts);
         })
         .catch((error) => {
-          console.error("Error during fetch: ", error.message);
+          console.error("Error during fetch: ", error);
         });
     });
   }, []);

@@ -23,7 +23,7 @@ export default function RegisterPage() {
 
   async function register(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:3001/register", {
+    const response = await fetch("http://localhost:3001/auth/register", {
       method: "POST",
       body: JSON.stringify({
         firstName: data.firstName,

@@ -18,7 +18,7 @@ function Article({ selectedCategory, articleFilter }) {
 
   async function fetchPopularPosts() {
     try {
-      const response = await fetch("http://localhost:3001/popularposts");
+      const response = await fetch("http://localhost:3001/posts/popularposts");
       if (!response.ok) {
         throw new Error("Failed to fetch popular posts");
       }
@@ -50,7 +50,7 @@ function Article({ selectedCategory, articleFilter }) {
 
   async function fetchFilteredPosts() {
     try {
-      const url = new URL("http://localhost:3001/filteredPosts");
+      const url = new URL("http://localhost:3001/posts/filteredPosts");
       const params = new URLSearchParams();
 
       if (articleFilter.dateFilter) {

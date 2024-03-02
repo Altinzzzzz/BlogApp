@@ -14,7 +14,7 @@ function Navbar({ onCategoryClick }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/getCategories")
+    fetch("http://localhost:3001/category/getCategories")
       .then((response) => {
         if (!response.ok) {
           throw new Error(

@@ -17,7 +17,7 @@ function EditPost() {
   const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/post/${id}`).then((response) => {
+    fetch(`http://localhost:3001/postInfo/${id}`).then((response) => {
       response.json().then((postInfo) => {
         const isAuthor = userInfo.id === postInfo.author._id;
         const isAdmin = userInfo.type === "admin";
@@ -53,7 +53,7 @@ function EditPost() {
       data.set("file", files?.[0]);
     }
 
-    const response = await fetch(`http://localhost:3001/post/${id}/edit`, {
+    const response = await fetch(`http://localhost:3001/postInfo/${id}/edit`, {
       method: "PUT",
       body: data,
       credentials: "include",

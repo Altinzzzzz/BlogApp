@@ -21,7 +21,7 @@ function CreatePost() {
     data.set("category", category);
     data.set("tags", tags);
     data.set("file", files[0]);
-    const response = await fetch("http://localhost:3001/post", {
+    const response = await fetch("http://localhost:3001/postInfo/create", {
       method: "POST",
       body: data,
       credentials: "include",

@@ -7,7 +7,7 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:3001/popularposts")
+    fetch("http://localhost:3001/posts/popularposts")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
