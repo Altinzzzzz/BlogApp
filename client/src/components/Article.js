@@ -5,6 +5,8 @@ import { Post } from "../pages/index";
 
 function Article({ selectedCategory, articleFilter }) {
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
 
   useEffect(() => {
     if (articleFilter) {
@@ -14,11 +16,13 @@ function Article({ selectedCategory, articleFilter }) {
     } else {
       fetchPopularPosts();
     }
-  }, [selectedCategory, articleFilter]);
+  }, [selectedCategory, articleFilter, page]);
 
   async function fetchPopularPosts() {
     try {
-      const response = await fetch("http://localhost:3001/posts/popularposts");
+      const response = await fetch(
+        `http://localhost:3001/posts/popularposts?page=${page}&limit=${limit}`
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch popular posts");
       }
@@ -36,7 +40,7 @@ function Article({ selectedCategory, articleFilter }) {
   async function fetchCategoryPosts() {
     try {
       const response = await fetch(
-        `http://localhost:3001/posts/category?category=${selectedCategory}`
+        `http://localhost:3001/posts/category?category=${selectedCategory}?page=${page}&limit=${limit}`
       );
       if (!response.ok) {
         throw new Error("Error fetching posts based on category");
@@ -50,7 +54,9 @@ function Article({ selectedCategory, articleFilter }) {
 
   async function fetchFilteredPosts() {
     try {
-      const url = new URL("http://localhost:3001/posts/filteredPosts");
+      const url = new URL(
+        `http://localhost:3001/posts/filteredPosts?page=${page}&limit=${limit}`
+      );
       const params = new URLSearchParams();
 
       if (articleFilter.dateFilter) {
@@ -78,19 +84,42 @@ function Article({ selectedCategory, articleFilter }) {
     }
   }
 
+  function handlePageChange(newPage) {
+    setPage(newPage);
+  }
+
   return (
-    <div className={styles.container}>
-      {Array.isArray(posts) && posts.length === 0 ? (
-        <h1 style={{ textAlign: "center" }}>No posts available</h1>
-      ) : (
-        <div className={styles.postsContainer}>
-          {Array.isArray(posts) &&
-            posts.map((post) => <Post key={post._id} {...post} />)}
+    <>
+      <div className={styles.container}>
+        {Array.isArray(posts) && posts.length === 0 ? (
+          <h1 style={{ textAlign: "center" }}>No posts available</h1>
+        ) : (
+          <div className={styles.postsContainer}>
+            {Array.isArray(posts) &&
+              posts.map((post) => <Post key={post._id} {...post} />)}
+          </div>
+        )}
+        {!Array.isArray(posts) &&
+          console.error("Invalid 'posts' data type:", typeof posts)}
+        <div className={styles.pagination} style={{ marginRight: "50px" }}>
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page === 1}
+            className={styles.paginationButton}
+          >
+            Previous
+          </button>
+          <span style={{ color: "white", padding: "20px" }}>Page {page}</span>
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={posts.length < limit}
+            className={styles.paginationButton}
+          >
+            Next
+          </button>
         </div>
-      )}
-      {!Array.isArray(posts) &&
-        console.error("Invalid 'posts' data type:", typeof posts)}
-    </div>
+      </div>
+    </>
   );
 }
 

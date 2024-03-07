@@ -27,10 +27,6 @@ h1 {
   color: #fff;
 }
 
-p {
-  border: 1px solid red;
-}
-
 a {
   color: #2563eb;
   text-decoration: none;
@@ -39,4 +35,31 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  padding: 15px 30px;
+  margin: 0 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

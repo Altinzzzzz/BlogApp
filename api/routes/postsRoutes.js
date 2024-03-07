@@ -4,6 +4,11 @@ const Post = require("../models/Post");
 const app = express();
 
 app.get("/category", async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 7;
+
+  const startIndex = (page - 1) * limit;
+
   const category = req.query.category;
 
   if (!category) {
@@ -14,7 +19,8 @@ app.get("/category", async (req, res) => {
     const posts = await Post.find({ category: category })
       .populate("author", ["fullname"])
       .sort({ createdAt: -1 })
-      .limit(20);
+      .skip(startIndex)
+      .limit(limit);
     res.json(posts);
   } catch (error) {
     console.error("Error fetching posts by category: ", error);
@@ -24,23 +30,36 @@ app.get("/category", async (req, res) => {
 
 app.get("/popularposts", async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 7;
+
+    const startIndex = (page - 1) * limit;
+
     const posts = await Post.find()
       .populate("author", ["fullname"])
       .sort({ views: -1, createdAt: -1 })
-      .limit(10);
+      .skip(startIndex)
+      .limit(limit);
+
     res.json(posts);
   } catch (error) {
     console.error("Error fetching posts: ", error);
-    res.json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 app.get("/latestposts", async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 7;
+
+    const startIndex = (page - 1) * limit;
+
     const posts = await Post.find()
       .populate("author", ["fullname"])
       .sort({ createdAt: -1 })
-      .limit(10);
+      .skip(startIndex)
+      .limit(limit);
     res.json(posts);
   } catch (error) {
     console.error("Error fetching posts: ", error);
@@ -50,6 +69,11 @@ app.get("/latestposts", async (req, res) => {
 
 app.get("/filteredPosts", async (req, res) => {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 7;
+
+    const startIndex = (page - 1) * limit;
+
     const dateFilter = req.query.dateFilter;
     const typeFilter = req.query.typeFilter;
     const tagFilter = req.query.tagFilter;
@@ -83,12 +107,14 @@ app.get("/filteredPosts", async (req, res) => {
       posts = await Post.find(query)
         .populate("author", ["fullname"])
         .sort({ views: -1 })
-        .limit(10);
+        .skip(startIndex)
+        .limit(limit);
     } else {
       posts = await Post.find(query)
         .populate("author", ["fullname"])
         .sort({ createdAt: -1 })
-        .limit(10);
+        .skip(startIndex)
+        .limit(limit);
     }
 
     res.json(posts);

@@ -55,7 +55,7 @@ function Post(post) {
               Read More
             </Link>
           </p>
-          <p>Views: {views / 2}</p>
+          <p>Views: {views}</p>
         </div>
       </div>
     </div>

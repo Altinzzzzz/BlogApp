@@ -231,7 +231,7 @@ export default function PostPage() {
           </div>
         </div>
       )}
-      <p className={styles.views}>Views: {postInfo?.views / 2}</p>
+      <p className={styles.views}>Views: {postInfo?.views}</p>
       <div className={styles.imageContainer}>
         <img
           src={`http://localhost:3001/${postInfo?.cover}`}

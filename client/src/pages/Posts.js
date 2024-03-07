@@ -7,10 +7,15 @@ function Posts() {
   const [typeFilter, setTypeFilter] = useState(null);
   const [tagFilter, setTagFilter] = useState("");
   const [articleFilter, setArticleFilter] = useState(null);
-
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+
   useEffect(() => {
-    fetch("http://localhost:3001/posts/popularposts").then((response) => {
+    fetch(
+      `http://localhost:3001/posts/popularposts?page=${page}&limit=${limit}`
+    ).then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

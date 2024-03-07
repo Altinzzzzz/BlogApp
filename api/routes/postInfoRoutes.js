@@ -14,13 +14,31 @@ const uploadMiddleware = multer({ dest: "uploads/" });
 
 const app = express();
 
+app.use("/uploads", express.static(__dirname + "/uploads"));
+
 app.post("/create", uploadMiddleware.single("file"), async (req, res) => {
   try {
-    const { originalname, path } = req.file;
-    const parts = originalname.split(".");
-    const ext = parts[parts.length - 1];
-    const newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
+    const { title, summary, content, category, tags } = req.body;
+    let newPath;
+    if (req.file) {
+      const { originalname, path } = req.file;
+      const parts = originalname.split(".");
+      const ext = parts[parts.length - 1];
+      newPath = path + "." + ext;
+      fs.renameSync(path, newPath);
+    } else {
+      if (category == "Gaming") {
+        newPath = "uploads/gaming.webp";
+      } else if (category == "Sports") {
+        newPath = "uploads/sports.webp";
+      } else if (category == "History") {
+        newPath = "uploads/history.jpg";
+      } else if (category == "Other") {
+        newPath = "uploads/Other.webp";
+      } else {
+        newPath = "uploads/news.webp";
+      }
+    }
 
     const { token } = req.cookies;
     jwt.verify(token, secret, {}, async (error, info) => {
@@ -28,8 +46,6 @@ app.post("/create", uploadMiddleware.single("file"), async (req, res) => {
         res.status(401).json({ message: "Unauthorized - Invalid token" });
         return;
       }
-
-      const { title, summary, content, category, tags } = req.body;
 
       const validTags = getTags(tags);
 

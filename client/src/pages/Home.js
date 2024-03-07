@@ -5,7 +5,10 @@ import styles from "../styles/Posts.module.css";
 
 function Home() {
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
   useEffect(() => {
     fetch("http://localhost:3001/posts/popularposts")
       .then((response) => {
@@ -36,7 +39,11 @@ function Home() {
           console.error("Error during fetch: ", error);
         });
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, page]);
+
+  function handlePageChange(newPage) {
+    setPage(newPage);
+  }
 
   return (
     <div
@@ -58,15 +65,34 @@ function Home() {
               : `Posts in ${selectedCategory}`}
           </h1>
         )}
-        {posts && Array.isArray(posts) && posts.length > 0 ? (
-          posts.map((post) => <Post key={post._id} {...post} />)
-        ) : (
-          <h1 style={{ textAlign: "center" }}>
-            {posts && posts.length === 0
-              ? "No posts available"
-              : "Error loading posts"}
-          </h1>
-        )}
+        <div className={styles.postsContainer}>
+          {posts && Array.isArray(posts) && posts.length > 0 ? (
+            posts.map((post) => <Post key={post._id} {...post} />)
+          ) : (
+            <h1 style={{ textAlign: "center" }}>
+              {posts && posts.length === 0
+                ? "No posts available"
+                : "Error loading posts"}
+            </h1>
+          )}
+        </div>
+        <div className={styles.pagination}>
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page === 1}
+            className={styles.paginationButton}
+          >
+            Previous
+          </button>
+          <span style={{ color: "white", padding: "20px" }}>Page {page}</span>
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={posts.length < limit}
+            className={styles.paginationButton}
+          >
+            Next
+          </button>
+        </div>
       </main>
     </div>
   );

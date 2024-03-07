@@ -1,5 +1,5 @@
 .mainPage {
-  width: 60%;
+  width: 70%;
   gap: 40px;
   margin-top: 30px;
   display: flex;
@@ -7,16 +7,50 @@
   align-items: center;
 }
 
-/* .postsContainer {
+.postsContainer {
   border-top: 1px solid white;
-  padding-top: 30px;
-  width: 70%;
+  padding-top: 60px;
+  width: 80%;
   display: grid;
   grid-template-columns: 1fr;
-} */
+  gap: 30px;
+}
+
+.popularPost {
+  display: flex;
+  width: 60%;
+  margin-bottom: 20px;
+}
 
 @media (max-width: 768px) {
   .postsContainer {
     border: none;
   }
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination button {
+  padding: 15px 30px;
+  margin: 0 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
